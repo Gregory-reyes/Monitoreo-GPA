@@ -53,8 +53,8 @@ receivers:
   - to: 'gregory@lazarillo.app'
     from: 'gregory@lazarillo.app'
     smarthost: smtp.gmail.com:587
-    auth_username: '{{ .Env.EMAIL_USER }}'
-    auth_password: '{{ .Env.EMAIL_PASSWORD }}'
+    auth_username: 'gregory@lazarillo.app'
+    auth_password: '.0814Mazda3'
 
 templates:
 - '/etc/alertmanager/template/*.tmpl'
