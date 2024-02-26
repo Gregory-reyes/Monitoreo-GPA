@@ -2,18 +2,18 @@ global:
   scrape_interval:     15s
   evaluation_interval: 15s
 
-  # Attach these labels to any time series or alerts when communicating with
-  # external systems (federation, remote storage, Alertmanager).
+  # Adjunta estas etiquetas a cualquier serie de tiempo o alerta al comunicarse con
+  # sistemas externos (federación, almacenamiento remoto, Alertmanager).
   external_labels:
       monitor: 'docker-host-alpha'
 
-# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+# Cargar y evaluar reglas en este archivo cada 'evaluation_interval' segundos.
 rule_files:
   - "targets.rules"
   - "hosts.rules"
   - "containers.rules"
 
-# A scrape configuration containing exactly one endpoint to scrape.
+# Una configuración de raspado que contiene exactamente un punto final para raspar.
 scrape_configs:
   - job_name: 'nodeexporter'
     scrape_interval: 5s
