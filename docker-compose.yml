@@ -34,7 +34,7 @@ services:
   alertmanager:
     image: prom/alertmanager:v0.26.0
     env_file:
-      - alertmanager/.env
+      - .env
     container_name: alertmanager
     volumes:
       - ./alertmanager:/etc/alertmanager
