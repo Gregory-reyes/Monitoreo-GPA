@@ -492,7 +492,7 @@
             }
           ],
           "thresholds": "",
-          "title": "DISCO Disponible",
+          "title": "Disco Disponible",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -568,7 +568,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Promedio de Carga 1m",
+          "title": "Promedio de Carga por Minuto",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -834,7 +834,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "CPU Uso",
+          "title": "CPU General",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -960,7 +960,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Uso RAM",
+          "title": "RAM general",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1264,7 +1264,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "node_memory_SwapTotal_bytes - node_memory_SwapFree_bytes",
+              "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes",
               "interval": "10s",
               "intervalFactor": 1,
               "legendFormat": "Used",
@@ -1272,7 +1272,7 @@
               "step": 10
             },
             {
-              "expr": "node_memory_SwapFree_bytes",
+              "expr": "node_memory_MemAvailable_bytes",
               "interval": "10s",
               "intervalFactor": 1,
               "legendFormat": "Free",
@@ -1282,7 +1282,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Swap Usage",
+          "title": "Uso RAM",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1312,6 +1312,7 @@
             }
           ]
         },
+        
         {
           "aliasColors": {},
           "bars": false,
@@ -1319,7 +1320,7 @@
           "decimals": 2,
           "editable": true,
           "error": false,
-          "fill": 1,
+          "fill": 4,
           "grid": {
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
@@ -1334,6 +1335,7 @@
             "current": false,
             "max": true,
             "min": true,
+            "rightSide": false,
             "show": true,
             "total": false,
             "values": true
@@ -1346,36 +1348,33 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "Used",
+              "color": "#890F02"
+            }
+          ],
           "span": 6,
-          "stack": false,
+          "stack": true,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(node_vmstat_pswpin[1m]) * 4096 or irate(node_vmstat_pswpin[5m]) * 4096",
+              "expr": "sum(rate(node_cpu_seconds_total{mode='user'}[5m])) + sum(rate(node_cpu_seconds_total{mode='system'}[5m]))",
               "interval": "10s",
               "intervalFactor": 1,
-              "legendFormat": "In",
+              "legendFormat": "Used",
               "refId": "A",
-              "step": 10
-            },
-            {
-              "expr": "rate(node_vmstat_pswpout[1m]) * 4096 or irate(node_vmstat_pswpout[5m]) * 4096",
-              "interval": "10s",
-              "intervalFactor": 1,
-              "legendFormat": "Out",
-              "refId": "B",
               "step": 10
             }
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Swap I/O",
+          "title": "Uso CPU",
           "tooltip": {
             "msResolution": true,
             "shared": true,
-            "sort": 0,
-            "value_type": "cumulative"
+            "sort": 2,
+            "value_type": "individual"
           },
           "type": "graph",
           "xaxis": {
@@ -1383,7 +1382,7 @@
           },
           "yaxes": [
             {
-              "format": "Bps",
+              "format": "bytes",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -1400,6 +1399,7 @@
             }
           ]
         }
+        
       ],
       "title": "New row"
     }
