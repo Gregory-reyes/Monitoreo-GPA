@@ -84,7 +84,7 @@
             }
           ],
           "thresholds": "65, 90",
-          "title": "CPU Load",
+          "title": "Uso de CPU",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -167,7 +167,7 @@
             }
           ],
           "thresholds": "",
-          "title": "CPU Cores",
+          "title": "Nucleos de CPU",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
@@ -246,7 +246,7 @@
             }
           ],
           "thresholds": "65, 90",
-          "title": "Memory Load",
+          "title": "Memoria Usada",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -320,7 +320,7 @@
           },
           "targets": [
             {
-              "expr": "sum(container_memory_usage_bytes{image!=\"\"})",
+              "expr": "sum(container_fs_usage_bytes{image!=\"\"})",
               "interval": "10s",
               "intervalFactor": 2,
               "legendFormat": "",
@@ -330,7 +330,7 @@
           ],
           "thresholds": "",
           "timeFrom": "10s",
-          "title": "Used Memory",
+          "title": "Uso de Memoria",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -412,7 +412,7 @@
             }
           ],
           "thresholds": "65, 90",
-          "title": "Storage Load",
+          "title": "Uso de Disco",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -486,7 +486,7 @@
           },
           "targets": [
             {
-              "expr": "sum(container_fs_usage_bytes)",
+              "expr": "irate(container_fs_usage_bytes[5m])",
               "interval": "30s",
               "intervalFactor": 2,
               "refId": "A",
@@ -494,7 +494,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Used Storage",
+          "title": "carga del Disco",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -567,7 +567,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Running Containers",
+          "title": "Cantidad de Contenedores Corriendo",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -652,7 +652,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "System Load",
+          "title": "Carga de Sistema por minuto",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -764,7 +764,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "I/O Usage",
+          "title": "Entrada y Salida Disco por Segundo",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -853,7 +853,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Container CPU Usage",
+          "title": "Uso del CPU del Contenedor",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -942,7 +942,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Container Memory Usage",
+          "title": "Uso de Memoria del Contenedor",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1023,7 +1023,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Container Cached Memory Usage",
+          "title": "Uso de Memoria cache del Contenedor",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1112,7 +1112,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Container Network Input",
+          "title": "Entrada de Red de Contenedores",
           "tooltip": {
             "msResolution": true,
             "shared": true,
@@ -1193,7 +1193,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Container Network Output",
+          "title": "Salida de Red de Contenedores",
           "tooltip": {
             "msResolution": true,
             "shared": true,
