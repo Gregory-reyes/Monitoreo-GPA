@@ -403,7 +403,7 @@
           },
           "targets": [
             {
-              "expr": "(node_filesystem_size_bytes{fstype=\"ext4\"} - node_filesystem_free_bytes{fstype=\"ext4\"}) / node_filesystem_size_bytes{fstype=\"ext4\"}  * 100",
+              "expr": "((node_filesystem_size_bytes{fstype=~\"ext4|xfs\"} - node_filesystem_avail_bytes{fstype=~\"ext4|xfs\"}) / node_filesystem_size_bytes{fstype=~\"ext4|xfs\"}) * 100",
               "interval": "30s",
               "intervalFactor": 1,
               "legendFormat": "",
@@ -486,7 +486,7 @@
           },
           "targets": [
             {
-              "expr": "sum(container_fs_usage_bytes{image!=\"\"})",
+              "expr": "(node_filesystem_size_bytes{fstype='ext4'} - node_filesystem_free_bytes{fstype='ext4'})",
               "interval": "30s",
               "intervalFactor": 2,
               "refId": "A",
@@ -494,7 +494,7 @@
             }
           ],
           "thresholds": "",
-          "title": "carga del Disco",
+          "title": "Espacio Usado del Disco",
           "transparent": false,
           "type": "singlestat",
           "valueFontSize": "80%",
